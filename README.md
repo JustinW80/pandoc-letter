@@ -7,36 +7,43 @@ This template allows you to write letters in Markdown and convert them to nice l
 * address
 * return-address
 
+Plus two variables that are extra features:
+
+* blockquote
+* date
+
 All of which can be specified in a YAML metadata block. For example:
 
 	---
-	author: Aaron
-	opening: To whom it may concern,
-	closing: Sincerely,
-	address: 
-	 - 123 Street Rd
-	 - Chicago, IL
+	blockquote: true
 	return-address: 
 	 - My Home
 	 - 456 Road St.
 	 - New York, NY
+	date: April 23, 2015
+	address: 
+	 - 123 Street Rd
+	 - Chicago, IL
+	opening: To whom it may concern,
+	closing: Sincerely,
+	author: Aaron
 	...
 
 Note that each address component should start with a hyphen. The provided example letter can be compiled with the following command:
 
 ```
-pandoc --template=template-letter.tex -V blockquote example/letter.md -o example/letter.pdf
+pandoc --template=template-letter.tex example/letter.md -o example/letter.pdf
 ```
 
-You can see the PDF output [here](https://github.com/aaronwolen/pandoc-letter/blob/master/example/letter.pdf).
+You can see the PDF output [here](https://github.com/aaronwolen/pandoc-letter/blob/master/example/letter.pdf)..
 
 ## Extra features
 
-`-V blockquote`
-:   Nice looking blockquotes à la [bootstrap][]
+YAML variable `blockquote`
+:   Nice looking blockquotes à la [bootstrap][].
 
-`-V date=CUSTOMDATE`
-:    Insert a custom date in place of today's date
+YAML variable `date=CUSTOMDATE`
+:    Insert a custom date. Remove to use today's date.
 
 
 [Pandoc]: http://johnmacfarlane.net/pandoc/
